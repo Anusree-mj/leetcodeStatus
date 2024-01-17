@@ -5,12 +5,12 @@
  * @return {boolean}
  */
 var containsNearbyDuplicate = function (nums, k) {
-    const numberIndices = {};
+    const numsMap = new Map();
     for (let i = 0; i < nums.length; i++) {
-      if(numberIndices[nums[i]] !==undefined && i-numberIndices[nums[i]]<=k){
-          return true;
-      }
-      numberIndices[nums[i]]=i;
+        if (i - numsMap.get(nums[i]) <= k) {
+            return true;
+        }
+        numsMap.set(nums[i], i)
     }
     return false;
 };
