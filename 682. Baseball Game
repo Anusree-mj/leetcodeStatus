@@ -1,0 +1,22 @@
+/**
+ * @param {string[]} operations
+ * @return {number}
+ */
+var calPoints = function (operations) {
+    let stack = [];
+   for(const ops of operations){
+        let n=stack.length;
+        if(ops==="+"){
+            stack.push(stack[n-1]+stack[n-2]);
+        }else if(ops==="D"){
+            stack.push(stack[n-1]*2);
+        }else if(ops==="C"){
+            stack.pop();
+        }else{
+            stack.push(parseInt(ops));
+        }
+    }
+    return stack.reduce((a, b) => a + b, 0);
+};
+
+console.log(calPoints(["5","2","C","D","+"]))
