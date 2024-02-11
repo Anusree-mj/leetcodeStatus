@@ -1,0 +1,17 @@
+/**
+ * @param {number[]} nums
+ * @return {number}
+ */
+var minimumSum = function (nums) {
+    let result = Infinity;
+    for (let i = 0; i < nums.length - 1; i++) {
+        for (let j = i + 1; j < nums.length; j++) {
+            for (let k = j + 1; k < nums.length; k++) {
+                if (nums[i] < nums[j] && nums[k] < nums[j]) {
+                    result = Math.min(result, nums[i] + nums[j] + nums[k]);
+                }
+            }
+        }
+    }
+       return result === Infinity ? -1 : result;
+};
