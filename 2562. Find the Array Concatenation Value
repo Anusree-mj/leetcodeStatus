@@ -1,0 +1,17 @@
+/**
+ * @param {number[]} nums
+ * @return {number}
+ */
+var findTheArrayConcVal = function (nums) {
+    let concatSum = 0;
+    while (nums.length) {
+        let firstNum = nums.shift().toString();
+        let lastNum;
+        if(nums.length){
+         lastNum = nums.pop().toString();
+        }
+        let temp = parseInt(firstNum.concat(lastNum));
+        concatSum += temp;
+    }
+    return concatSum;
+};
