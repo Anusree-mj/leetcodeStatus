@@ -1,0 +1,23 @@
+/**
+ * @param {number[]} nums
+ * @return {number}
+ */
+var maxFrequencyElements = function (nums) {
+    let maxFrequency;
+    let result = 0;
+    let numsArr = new Map();
+    for (let i = 0; i < nums.length; i++) {
+        if (numsArr.has(nums[i])) {
+            numsArr.set(nums[i], numsArr.get(nums[i]) + 1)
+        } else {
+            numsArr.set(nums[i], 1)
+        }
+    }
+    maxFrequency = Math.max(...numsArr.values())
+    for (const frequency of numsArr.values()) {
+        if (frequency === maxFrequency) {
+            result += maxFrequency
+        }
+    }
+    return result;
+};
